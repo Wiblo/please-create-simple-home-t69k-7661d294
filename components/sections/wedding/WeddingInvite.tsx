@@ -1,291 +1,333 @@
+'use client'
+
 import { Container } from '@/components/layout/Container'
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { Button } from '@/components/ui/button'
-import { Calendar, MapPin, Clock, Heart } from 'lucide-react'
+import { Calendar, MapPin, Clock } from 'lucide-react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export function WeddingInvite() {
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 dark:from-rose-950 dark:via-pink-950 dark:to-purple-950">
-      {/* Hero background image with overlay */}
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?q=80&w=2070"
-          alt="Beautiful pink and white roses"
-          fill
-          className="object-cover opacity-30"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/90 dark:from-black/80 dark:via-black/60 dark:to-black/90" />
+    <div className="min-h-dvh relative bg-[#faf9f7]">
+      {/* Full-bleed hero section with dramatic botanical image */}
+      <div className="relative h-dvh overflow-hidden">
+        {/* Background image with parallax-ready setup */}
+        <motion.div
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
+            alt="Elegant garden roses"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Sophisticated gradient overlay - lighter at top for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[#faf9f7]" />
+        </motion.div>
+
+        {/* Hero content - asymmetric layout */}
+        <Container className="relative h-full flex flex-col justify-end pb-16 md:pb-24">
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl"
+          >
+            {/* Small caps intro */}
+            <p className="text-white/90 text-xs md:text-sm uppercase tracking-[0.4em] font-light mb-6">
+              Wedding Invitation
+            </p>
+
+            {/* Names - dramatic scale contrast */}
+            <h1 className="text-white mb-3">
+              <span className="block text-7xl md:text-9xl font-light tracking-tight leading-[0.9] text-balance">
+                Anne
+              </span>
+            </h1>
+            <div className="flex items-center gap-6 mb-3 ml-2">
+              <div className="h-[1px] w-16 bg-white/60" />
+              <span className="text-white/80 text-2xl md:text-3xl font-light italic">
+                and
+              </span>
+              <div className="h-[1px] w-16 bg-white/60" />
+            </div>
+            <h1 className="text-white mb-12">
+              <span className="block text-7xl md:text-9xl font-light tracking-tight leading-[0.9] text-balance">
+                John
+              </span>
+            </h1>
+
+            {/* Date emphasis */}
+            <div className="inline-block bg-white/95 backdrop-blur-sm px-8 py-4 rounded-sm">
+              <p className="text-xs uppercase tracking-[0.3em] text-foreground/60 mb-1">
+                Saturday
+              </p>
+              <p className="text-2xl md:text-3xl tabular-nums font-light text-foreground">
+                June 14, 2026
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.6 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-12 w-[1px] bg-white/40 animate-[pulse_2s_ease-in-out_infinite]" />
+              <span className="text-white/60 text-xs uppercase tracking-wider">
+                Scroll
+              </span>
+            </div>
+          </motion.div>
+        </Container>
       </div>
 
-      <SectionWrapper className="relative z-10">
-        <Container className="max-w-5xl">
-          {/* Floating floral decorations */}
-          <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 -translate-x-8 -translate-y-8 opacity-80">
-            <Image
-              src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070"
-              alt="Decorative flowers"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 translate-x-8 -translate-y-8 opacity-80 scale-x-[-1]">
-            <Image
-              src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070"
-              alt="Decorative flowers"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-8 w-48 h-48 md:w-64 md:h-64 opacity-70">
-            <Image
-              src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=2070"
-              alt="Decorative floral arrangement"
-              fill
-              className="object-contain"
-            />
-          </div>
+      {/* Details section - editorial grid layout */}
+      <div className="bg-[#faf9f7]">
+        <Container className="py-24 md:py-32">
+          {/* Invitation copy - centered, elegant */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center mb-24"
+          >
+            <p className="text-xl md:text-2xl font-light text-foreground/80 leading-relaxed text-pretty">
+              Together with their families, Anne and John request the pleasure
+              of your company at the celebration of their marriage
+            </p>
+          </motion.div>
 
-          {/* Main invitation card */}
-          <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-2 border-rose-200 dark:border-rose-800 rounded-3xl p-8 md:p-16 shadow-2xl">
-            {/* Watercolor effect overlay */}
-            <div className="absolute inset-0 rounded-3xl overflow-hidden opacity-20">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-pink-300 via-rose-300 to-transparent blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-purple-300 via-pink-300 to-transparent blur-3xl" />
-            </div>
-
-            <div className="relative z-10 text-center space-y-10">
-              {/* Elegant script header */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3">
-                  <div className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent via-rose-400 to-rose-400" />
-                  <Heart className="w-5 h-5 text-rose-500 fill-rose-500" />
-                  <div className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent via-rose-400 to-rose-400" />
-                </div>
-                <p className="text-sm md:text-base text-rose-600 dark:text-rose-400 uppercase tracking-[0.3em] font-light">
-                  Together with their families
-                </p>
-              </div>
-
-              {/* Couple names with elegant styling */}
-              <div className="space-y-6">
-                <div className="space-y-4">
-                  <h1 className="text-6xl md:text-8xl font-serif font-light text-balance bg-gradient-to-r from-rose-600 via-pink-500 to-purple-600 bg-clip-text text-transparent">
-                    Anne
-                  </h1>
-                  <div className="flex items-center justify-center gap-4">
-                    <div className="relative w-8 h-8 animate-pulse">
-                      <Image
-                        src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                        alt="Rose"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                    <span className="text-4xl md:text-5xl font-light text-rose-400">&</span>
-                    <div className="relative w-8 h-8 animate-pulse">
-                      <Image
-                        src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                        alt="Rose"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
+          {/* Details grid - asymmetric, magazine-style */}
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 max-w-6xl mx-auto">
+            {/* Left column - Time and Date */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="md:col-span-5 space-y-12"
+            >
+              {/* Date detail card */}
+              <div className="border-l-2 border-foreground/20 pl-6">
+                <div className="flex items-start gap-4 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-foreground/60" />
                   </div>
-                  <h1 className="text-6xl md:text-8xl font-serif font-light text-balance bg-gradient-to-r from-purple-600 via-pink-500 to-rose-600 bg-clip-text text-transparent">
-                    John
-                  </h1>
-                </div>
-              </div>
-
-              {/* Invitation message */}
-              <div className="space-y-4 max-w-2xl mx-auto">
-                <p className="text-xl md:text-2xl font-serif text-gray-700 dark:text-gray-300 text-balance italic">
-                  Request the pleasure of your company
-                </p>
-                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 text-balance">
-                  at the celebration of their marriage
-                </p>
-              </div>
-
-              {/* Decorative floral divider */}
-              <div className="flex items-center justify-center gap-2 py-6">
-                <div className="relative w-6 h-6">
-                  <Image
-                    src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                    alt="Flower"
-                    fill
-                    className="object-contain opacity-60"
-                  />
-                </div>
-                <div className="h-px w-12 bg-gradient-to-r from-transparent via-rose-300 to-transparent" />
-                <div className="relative w-8 h-8">
-                  <Image
-                    src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                    alt="Flower"
-                    fill
-                    className="object-contain opacity-80"
-                  />
-                </div>
-                <div className="h-px w-12 bg-gradient-to-r from-transparent via-rose-300 to-transparent" />
-                <div className="relative w-6 h-6">
-                  <Image
-                    src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                    alt="Flower"
-                    fill
-                    className="object-contain opacity-60"
-                  />
-                </div>
-              </div>
-
-              {/* Wedding details with elegant cards */}
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                  {/* Date card */}
-                  <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950 dark:to-pink-950 rounded-2xl p-6 border border-rose-200 dark:border-rose-800 shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="flex flex-col items-center gap-3">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center shadow-lg">
-                        <Calendar className="w-7 h-7 text-white" />
-                      </div>
-                      <div className="text-center">
-                        <p className="text-sm text-rose-600 dark:text-rose-400 uppercase tracking-wider font-medium">
-                          Date
-                        </p>
-                        <p className="text-xl md:text-2xl font-serif font-medium mt-2 text-gray-800 dark:text-gray-200">
-                          Saturday
-                        </p>
-                        <p className="text-lg text-gray-700 dark:text-gray-300">
-                          June 14th, 2026
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Time card */}
-                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950 rounded-2xl p-6 border border-purple-200 dark:border-purple-800 shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="flex flex-col items-center gap-3">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-lg">
-                        <Clock className="w-7 h-7 text-white" />
-                      </div>
-                      <div className="text-center">
-                        <p className="text-sm text-purple-600 dark:text-purple-400 uppercase tracking-wider font-medium">
-                          Time
-                        </p>
-                        <p className="text-2xl md:text-3xl font-serif font-medium mt-2 text-gray-800 dark:text-gray-200">
-                          4:00 PM
-                        </p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Ceremony begins
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Venue card - full width */}
-                <div className="bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 dark:from-pink-950 dark:via-rose-950 dark:to-purple-950 rounded-2xl p-8 border border-pink-200 dark:border-pink-800 shadow-lg hover:shadow-xl transition-shadow max-w-3xl mx-auto">
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 via-rose-400 to-purple-500 flex items-center justify-center shadow-lg">
-                      <MapPin className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="text-sm text-rose-600 dark:text-rose-400 uppercase tracking-wider font-medium">
-                        Venue
-                      </p>
-                      <p className="text-2xl md:text-3xl font-serif font-medium mt-2 text-gray-800 dark:text-gray-200">
-                        The Rosewood Gardens
-                      </p>
-                      <p className="text-base text-gray-600 dark:text-gray-400 mt-2">
-                        125 Garden Lane, Bloomfield Estate
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-500 mt-1 italic">
-                        A stunning botanical venue surrounded by blooming gardens
-                      </p>
-                    </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-foreground/50 mb-2">
+                      Date
+                    </p>
+                    <p className="text-3xl font-light text-foreground mb-1 tabular-nums">
+                      14.06.2026
+                    </p>
+                    <p className="text-base text-foreground/70">Saturday</p>
                   </div>
                 </div>
               </div>
 
-              {/* Reception details with flower accent */}
-              <div className="bg-gradient-to-r from-rose-100/50 via-pink-100/50 to-purple-100/50 dark:from-rose-900/30 dark:via-pink-900/30 dark:to-purple-900/30 rounded-2xl p-6 max-w-2xl mx-auto border border-rose-200/50 dark:border-rose-800/50">
-                <div className="flex items-center justify-center gap-3 mb-3">
-                  <div className="relative w-5 h-5">
-                    <Image
-                      src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                      alt="Flower"
-                      fill
-                      className="object-contain"
-                    />
+              {/* Time detail card */}
+              <div className="border-l-2 border-foreground/20 pl-6">
+                <div className="flex items-start gap-4 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-foreground/60" />
                   </div>
-                  <p className="text-lg font-medium text-rose-700 dark:text-rose-300">
-                    Reception to Follow
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-foreground/50 mb-2">
+                      Time
+                    </p>
+                    <p className="text-3xl font-light text-foreground mb-1 tabular-nums">
+                      16:00
+                    </p>
+                    <p className="text-base text-foreground/70">
+                      Ceremony begins
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Small botanical accent image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative h-64 rounded-sm overflow-hidden hidden md:block"
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
+                  alt="Rose detail"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Right column - Venue (larger emphasis) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="md:col-span-7"
+            >
+              {/* Large venue image */}
+              <div className="relative h-96 md:h-[500px] rounded-sm overflow-hidden mb-8">
+                <Image
+                  src="https://images.unsplash.com/photo-1519167758481-83f29da8c86e?q=80&w=2070"
+                  alt="Garden venue"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                {/* Venue text overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="w-5 h-5" />
+                    <p className="text-xs uppercase tracking-[0.3em]">Venue</p>
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-light mb-3 text-balance">
+                    The Rosewood Gardens
+                  </h2>
+                  <p className="text-lg text-white/90 mb-1">
+                    125 Garden Lane
                   </p>
-                  <div className="relative w-5 h-5">
-                    <Image
-                      src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-                      alt="Flower"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
+                  <p className="text-base text-white/80">Bloomfield Estate</p>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Dinner, dancing, and celebration under the stars
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500 mt-2 italic">
-                  Cocktail hour • Garden dining • Live music • Dancing
-                </p>
               </div>
 
-              {/* RSVP button with gradient */}
-              <div className="pt-8">
-                <Button
-                  size="lg"
-                  className="text-lg px-10 py-6 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 shadow-2xl hover:shadow-rose-300 dark:hover:shadow-rose-900 transition-all duration-300 text-white border-0 hover:scale-105"
-                >
-                  RSVP by May 1st, 2026
-                </Button>
-              </div>
-
-              {/* Footer with romantic quote */}
-              <div className="pt-6 space-y-2">
-                <p className="text-base md:text-lg font-serif italic text-gray-600 dark:text-gray-400 text-balance">
-                  &ldquo;Love is the flower you&rsquo;ve got to let grow&rdquo;
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500">
-                  Please join us as we begin our journey together
+              {/* Venue description */}
+              <div className="pl-6 border-l-2 border-foreground/20">
+                <p className="text-base font-light text-foreground/70 leading-relaxed text-pretty">
+                  A stunning botanical venue surrounded by blooming gardens,
+                  providing an enchanting setting for our celebration under the
+                  stars.
                 </p>
               </div>
-
-              {/* Dress code */}
-              <div className="pt-4 pb-2">
-                <p className="text-sm text-gray-500 dark:text-gray-500">
-                  Dress Code: Garden Formal
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Additional floating floral elements */}
-          <div className="absolute bottom-12 left-8 w-24 h-24 md:w-32 md:h-32 opacity-60 animate-pulse hidden md:block">
-            <Image
-              src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-              alt="Decorative rose"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div className="absolute bottom-12 right-8 w-24 h-24 md:w-32 md:h-32 opacity-60 animate-pulse hidden md:block">
-            <Image
-              src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800"
-              alt="Decorative rose"
-              fill
-              className="object-contain"
-            />
+            </motion.div>
           </div>
         </Container>
-      </SectionWrapper>
+      </div>
+
+      {/* Reception section - dark inversion for drama */}
+      <div className="bg-foreground text-background py-24 md:py-32">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="text-center mb-12">
+              <p className="text-xs uppercase tracking-[0.4em] text-background/60 mb-6">
+                Following the Ceremony
+              </p>
+              <h2 className="text-5xl md:text-6xl font-light mb-8 text-balance">
+                Reception & Celebration
+              </h2>
+              <div className="h-[1px] w-32 bg-background/30 mx-auto mb-8" />
+            </div>
+
+            {/* Reception details grid */}
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div>
+                <p className="text-2xl font-light mb-2">5:00 PM</p>
+                <p className="text-sm text-background/70 uppercase tracking-wider">
+                  Cocktail Hour
+                </p>
+              </div>
+              <div>
+                <p className="text-2xl font-light mb-2">6:30 PM</p>
+                <p className="text-sm text-background/70 uppercase tracking-wider">
+                  Garden Dining
+                </p>
+              </div>
+              <div>
+                <p className="text-2xl font-light mb-2">8:00 PM</p>
+                <p className="text-sm text-background/70 uppercase tracking-wider">
+                  Live Music
+                </p>
+              </div>
+              <div>
+                <p className="text-2xl font-light mb-2">9:00 PM</p>
+                <p className="text-sm text-background/70 uppercase tracking-wider">
+                  Dancing
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-16 text-center">
+              <p className="text-lg font-light text-background/80 italic text-balance">
+                Dinner, dancing, and celebration under the stars
+              </p>
+            </div>
+          </motion.div>
+        </Container>
+      </div>
+
+      {/* RSVP section - clean, minimal */}
+      <div className="bg-[#faf9f7] py-24 md:py-32">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto text-center"
+          >
+            <p className="text-xs uppercase tracking-[0.4em] text-foreground/50 mb-6">
+              Please Respond By
+            </p>
+            <p className="text-4xl md:text-5xl font-light mb-12 tabular-nums">
+              May 1, 2026
+            </p>
+
+            <Button
+              size="lg"
+              className="bg-foreground text-background hover:bg-foreground/90 px-12 py-6 text-base uppercase tracking-[0.2em] rounded-none transition-all duration-300 hover:scale-105"
+            >
+              RSVP
+            </Button>
+
+            <div className="mt-16 space-y-4">
+              <p className="text-sm text-foreground/60 uppercase tracking-wider">
+                Dress Code: Garden Formal
+              </p>
+              <div className="h-[1px] w-24 bg-foreground/20 mx-auto" />
+              <p className="text-base font-light text-foreground/70 italic text-balance">
+                Please join us as we begin our journey together
+              </p>
+            </div>
+          </motion.div>
+        </Container>
+      </div>
+
+      {/* Final botanical image - full bleed footer */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="relative h-[50vh] md:h-[60vh]"
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1465146633011-14f8e0781093?q=80&w=2070"
+          alt="Garden flowers"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f7] via-transparent to-transparent" />
+      </motion.div>
     </div>
   )
 }
